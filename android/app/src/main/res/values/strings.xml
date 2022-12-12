@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Cello Store</string>
+    <string name="facebook_app_id">1020194268691211</string>
+    <string name="fb_login_protocol_scheme">fb1020194268691211</string>
+    <string name="facebook_client_token">36b5bf7a974aaa9b57255a0a07947aa0</string>
+</resources>
