@@ -6,6 +6,7 @@ import 'package:supercellostore/core/view&model/control_view_model.dart';
 import 'package:supercellostore/view/auth/login_screen.dart';
 import 'package:supercellostore/view/profile/profile_view.dart';
 import 'package:supercellostore/view/settings/drawer.dart';
+import 'package:supercellostore/view/widgets/custom_bottom_navigation_bar.dart';
 import '../core/network_viewmodel.dart';
 import 'widgets/custom_text.dart';
 
@@ -53,61 +54,6 @@ class ControlView extends StatelessWidget {
                 )
               : const NoInternetConnection();
     });
-  }
-}
-
-class CustomBottomNavigationBar extends StatelessWidget {
-  const CustomBottomNavigationBar({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 60.h,
-      child: GetBuilder<ControlViewModel>(
-        builder: (controller) => BottomNavigationBar(
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
-          type: BottomNavigationBarType.fixed,
-          elevation: 0,
-          currentIndex: controller.navigatorIndex,
-          onTap: (index) {
-            controller.changeCurrentScreen(index);
-          },
-          items: const [
-            BottomNavigationBarItem(
-              label: '',
-              icon: Icon(Icons.home),
-              activeIcon: CustomText(
-                text: 'Home',
-                fontSize: 14,
-                alignment: Alignment.center,
-                color: Colors.black,
-              ),
-            ),
-            BottomNavigationBarItem(
-              label: '',
-              icon: Icon(Icons.workspace_premium),
-              activeIcon: CustomText(
-                text: 'Customer',
-                fontSize: 14,
-                alignment: Alignment.center,
-                color: Colors.black,
-              ),
-            ),
-            BottomNavigationBarItem(
-              label: '',
-              icon: Icon(Icons.shopping_cart),
-              activeIcon: CustomText(
-                text: 'Cart',
-                fontSize: 14,
-                alignment: Alignment.center,
-                color: Colors.black,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
   }
 }
 

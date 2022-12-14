@@ -195,39 +195,6 @@ class _ProductDetailViewState extends State<ProductDetailView> {
         )
       ],
     );
-    /*SizedBox(
-      height: 200.h,
-      child: ListTile(
-        leading: SizedBox(
-          height: 200.h,
-          child: Image.network(
-            image,
-            fit: BoxFit.cover,
-          ),
-        ),
-        trailing: isSelected
-            ? const Icon(
-                Icons.check_circle,
-                color: Colors.amber,
-              )
-            : const Icon(
-                Icons.check_circle,
-                color: Colors.grey,
-              ),
-        onTap: () {
-          setState(() {
-            unSelectedProduct[index].isSelected =
-                !unSelectedProduct[index].isSelected;
-            if (unSelectedProduct[index].isSelected == true) {
-              selectedProduct.add(SelectedModel(image, isSelected));
-            } else if (unSelectedProduct[index].isSelected == false) {
-              selectedProduct.removeWhere(
-                  (element) => element.image == unSelectedProduct[index].image);
-            }
-          });
-        },
-      ),
-    );*/
   }
 }
 

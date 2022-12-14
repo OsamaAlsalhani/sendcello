@@ -5,13 +5,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:supercellostore/constance.dart';
-import 'package:supercellostore/core/view&model/cart_viewmodel.dart';
 import 'package:supercellostore/model/carousel_model.dart';
+import 'package:supercellostore/view/open_image.dart';
 
 class ImagesSlider extends StatefulWidget {
-  final CarouselModel imagescar;
+  final List<CarouselModel> carousel;
 
-  const ImagesSlider({super.key, required this.imagescar});
+  const ImagesSlider({super.key, required this.carousel});
 
   @override
   State<ImagesSlider> createState() => _ImagesSliderState();
@@ -19,18 +19,8 @@ class ImagesSlider extends StatefulWidget {
 
 class _ImagesSliderState extends State<ImagesSlider> {
   int activeIndex = 0;
-  toListOfString(CarouselModel list) {
-    List<String> stringList = [];
-    for (var i = 0; i < list.imageSlider.length; i++) {
-      stringList.add(list.imageSlider[i]);
-    }
-
-    return stringList;
-  }
-
   @override
   Widget build(BuildContext context) {
-    List<String> images = toListOfString(widget.imagescar);
     return Container(
       decoration: BoxDecoration(
         border: Border.all(color: primaryColor),
@@ -54,44 +44,42 @@ class _ImagesSliderState extends State<ImagesSlider> {
                 onPageChanged: (index, reason) {
                   setState(() => activeIndex = index);
                 }),
-            itemCount: images.length,
+            itemCount: widget.carousel.length,
             itemBuilder: (context, index, realINdex) {
-              final imageSlid = images[index];
+              final imageSlid = widget.carousel[index].image;
               return buildImage(imageSlid, index);
             },
           ),
           SizedBox(height: 12.h),
-          buildIndicator(images),
+          buildIndicator(widget.carousel.length),
         ],
       ),
     );
   }
 
   Widget buildImage(String imageSlid, int index) {
-    return GetBuilder<CartViewModel>(
-      builder: (controller) => Container(
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(15.r)),
-        margin: EdgeInsets.symmetric(horizontal: 12.w),
-        child: GestureDetector(
-          onTap: () {
-            // Get.to(() => OpenImageScreen(imageSlid: imageSlid));
-          },
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(15.r),
-            child: Image.network(
-              imageSlid,
-              fit: BoxFit.cover,
-            ),
+    return Container(
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(15.r)),
+      margin: EdgeInsets.symmetric(horizontal: 12.w),
+      child: GestureDetector(
+        onTap: () {
+          Get.to(() => OpenImageScreen(imageSlid: imageSlid));
+        },
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(15.r),
+          child: Image.network(
+            imageSlid,
+            fit: BoxFit.cover,
           ),
         ),
       ),
     );
   }
 
-  Widget buildIndicator(List<String> images) {
+  Widget buildIndicator(int index) {
     return AnimatedSmoothIndicator(
       activeIndex: activeIndex,
-      count: images.length,
+      count: index,
       effect: ScrollingDotsEffect(
         dotColor: Colors.grey.shade800,
         dotHeight: 10,

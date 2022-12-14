@@ -8,12 +8,13 @@ import 'package:supercellostore/constance.dart';
 import 'package:supercellostore/core/view&model/checkout_viewmodel.dart';
 import 'package:supercellostore/core/view&model/home_view_model.dart';
 import 'package:supercellostore/model/product_model.dart';
+import 'package:supercellostore/view/widgets/images_slider.dart';
 import 'package:supercellostore/view/widgets/list_product.dart';
-import 'category_products_view.dart';
 import 'product_detail_view.dart';
 import 'search_view.dart';
 import 'widgets/custom_text.dart';
 import 'widgets/list_categories.dart';
+import 'widgets/rowname.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -109,23 +110,26 @@ class _HomeViewState extends State<HomeView> {
                 color: primaryColor,
               ),
               SizedBox(height: 19.h),
-              //ImagesSlider(imagescar: controller.carousels.toList()[0]),
-              SizedBox(height: 19.h),
               ListViewCategories(),
               SizedBox(height: 30.h),
-              rowName(
+              RowName(
                 categoryName: 'New Form Cello',
                 productCategoryName: 'new',
               ),
               SizedBox(height: 30.h),
               ListViewProducts(
-                  product: reversedList(
-                controller.products
+                product: controller.products
                     .where((product) => product.category == 'new')
                     .toList(),
-              )),
+              ),
               SizedBox(height: 30.h),
-              rowName(
+              const Divider(),
+              ImagesSlider(
+                carousel: controller.carousels.toList(),
+              ),
+              SizedBox(height: 19.h),
+              const Divider(),
+              RowName(
                 categoryName: 'Creep Digital',
                 productCategoryName: 'كريب ديجيتال',
               ),
@@ -135,7 +139,7 @@ class _HomeViewState extends State<HomeView> {
                       .where((product) => product.category == 'كريب ديجيتال')
                       .toList())),
               SizedBox(height: 30.h),
-              rowName(
+              RowName(
                 categoryName: "Offers",
                 productCategoryName: 'عروضات',
               ),
@@ -148,45 +152,6 @@ class _HomeViewState extends State<HomeView> {
           ),
         ),
       ),
-    );
-  }
-}
-
-class rowName extends StatelessWidget {
-  final String categoryName, productCategoryName;
-  final HomeViewModel controller = Get.put(HomeViewModel());
-  rowName({
-    super.key,
-    required this.categoryName,
-    required this.productCategoryName,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        CustomText(
-          text: categoryName,
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
-          color: primaryColor,
-        ),
-        GestureDetector(
-          onTap: () {
-            Get.to(() => CategoryProductsView(
-                categoryName: categoryName,
-                products: controller.products
-                    .where((product) => product.category == productCategoryName)
-                    .toList()));
-          },
-          child: const CustomText(
-            text: 'See all',
-            fontSize: 16,
-            color: primaryColor,
-          ),
-        ),
-      ],
     );
   }
 }

@@ -43,7 +43,6 @@ class OpenImageScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
-              height: MediaQuery.of(context).size.height * 0.75,
               width: double.infinity,
               decoration: const BoxDecoration(
                 boxShadow: [

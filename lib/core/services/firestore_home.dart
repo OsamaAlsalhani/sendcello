@@ -13,6 +13,7 @@ class FirestoreHome {
 
   Stream<List<ProductModel>> getProducts() => FirebaseFirestore.instance
       .collection('Products')
+      .orderBy('date', descending: true)
       .snapshots()
       .map((snapshot) =>
           snapshot.docs.map((doc) => ProductModel.fromJson(doc)).toList());

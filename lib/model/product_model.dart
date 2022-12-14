@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ProductModel {
-  late String name, description, productId, category, price;
+  late String name, description, productId, category, price, date;
 
   late List<String> imageSlider;
   ProductModel({
@@ -19,6 +19,7 @@ class ProductModel {
     price = snapshot['price'];
     productId = snapshot.id;
     category = snapshot['category'];
+    date = snapshot['date'] as String;
     imageSlider = List<String>.from(snapshot['imageSlider']);
   }
 
@@ -29,6 +30,7 @@ class ProductModel {
       'price': price,
       'productId': productId,
       'category': category,
+      'date': date,
       'imageSlider': imageSlider,
     };
   }

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:supercellostore/constance.dart';
-import 'package:supercellostore/core/view&model/cart_viewmodel.dart';
 import 'package:supercellostore/core/view&model/checkout_viewmodel.dart';
 import 'package:supercellostore/view/widgets/custom_textfield.dart';
+import 'package:supercellostore/view/widgets/list_product_cart.dart';
 import 'widgets/custom_button.dart';
 import 'widgets/custom_text.dart';
 
@@ -57,7 +57,7 @@ class CheckoutView extends StatelessWidget {
                     init: Get.find<CheckoutViewModel>(),
                     builder: (controller) => Column(
                       children: [
-                        const ListViewProducts(),
+                        const ListViewProductsCart(),
                         SizedBox(height: 20.h),
                         CustomTextFormField(
                           title: 'Name',
@@ -138,85 +138,6 @@ class CheckoutView extends StatelessWidget {
                 ),
               ),
             ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class ListViewProducts extends StatelessWidget {
-  const ListViewProducts({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return GetBuilder<CartViewModel>(
-      builder: (controller) => Column(
-        children: [
-          SizedBox(
-            height: 160.h,
-            child: ListView.separated(
-              scrollDirection: Axis.horizontal,
-              itemCount: controller.cartProducts.length,
-              itemBuilder: (context, index) {
-                return SizedBox(
-                  width: 120.w,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4.r),
-                          color: Colors.white,
-                        ),
-                        height: 120.h,
-                        width: 120.w,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(12.r),
-                          child: Image.network(
-                            controller.cartProducts[index].image,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                      CustomText(
-                        text: controller.cartProducts[index].name,
-                        fontSize: 14,
-                        maxLines: 1,
-                      ),
-                      CustomText(
-                        text:
-                            '${controller.cartProducts[index].price} x ${controller.cartProducts[index].quantity}',
-                        fontSize: 14,
-                        color: primaryColor,
-                      ),
-                    ],
-                  ),
-                );
-              },
-              separatorBuilder: (context, index) {
-                return SizedBox(width: 15.w);
-              },
-            ),
-          ),
-          SizedBox(height: 12.h),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const CustomText(
-                text: 'TOTAL: ',
-                fontSize: 14,
-                color: Colors.grey,
-              ),
-              CustomText(
-                text: '${controller.totalPrice.toString()} S.P',
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: primaryColor,
-              ),
-            ],
           ),
         ],
       ),
