@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:supercellostore/constance.dart';
 
 import '../model/product_model.dart';
 import 'product_detail_view.dart';
@@ -77,13 +76,11 @@ class CategoryProductsView extends StatelessWidget {
                           CustomText(
                             text: products[index].description,
                             fontSize: 12,
-                            color: Colors.grey,
                             maxLines: 1,
                           ),
                           CustomText(
                             text: '${products[index].price} S.P',
                             fontSize: 16,
-                            color: primaryColor,
                           ),
                         ],
                       ),

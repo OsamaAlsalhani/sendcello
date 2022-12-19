@@ -53,12 +53,10 @@ class ListViewProducts extends StatelessWidget {
                   CustomText(
                     text: product[index].name,
                     fontSize: 16,
-                    color: primaryColor,
                   ),
                   CustomText(
                     text: product[index].description,
                     fontSize: 12,
-                    color: Colors.grey,
                     maxLines: 1,
                   ),
                   CustomText(

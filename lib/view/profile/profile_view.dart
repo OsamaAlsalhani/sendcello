@@ -1,7 +1,7 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:supercellostore/constance.dart';
 import 'package:supercellostore/core/view&model/auth_view_modle.dart';
 import 'package:supercellostore/core/view&model/profile_viewmodel.dart';
 import 'package:supercellostore/view/auth/login_screen.dart';
@@ -46,13 +46,11 @@ class ProfileView extends StatelessWidget {
                               CustomText(
                                 text: controller.currentUser!.name,
                                 fontSize: 26,
-                                color: Colors.black,
                               ),
                               SizedBox(height: 6.h),
                               CustomText(
                                 text: controller.currentUser!.email,
                                 fontSize: 14,
-                                color: Colors.black,
                               ),
                             ],
                           ),
@@ -88,6 +86,7 @@ class ProfileView extends StatelessWidget {
                         onTapFn: () {
                           Get.find<AuthViewModel>().signOut();
                           Get.offAll(LoginView());
+                          leavetopics();
                         },
                       ),
                     ],
@@ -97,6 +96,10 @@ class ProfileView extends StatelessWidget {
       ),
     );
   }
+}
+
+leavetopics() async {
+  await FirebaseMessaging.instance.unsubscribeFromTopic('Cello');
 }
 
 class CustomListTile extends StatelessWidget {
@@ -121,7 +124,6 @@ class CustomListTile extends StatelessWidget {
           title: CustomText(
             text: title,
             fontSize: 18,
-            color: primaryColor,
           ),
           trailing: title == 'Log Out'
               ? null

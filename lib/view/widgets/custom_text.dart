@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class CustomText extends StatelessWidget {
+class CustomText extends StatefulWidget {
   final String text;
   final double fontSize;
   final FontWeight fontWeight;
-  final Color color;
+  final Color? color;
   final Alignment alignment;
   final int? maxLines;
   final double? height;
@@ -14,25 +14,30 @@ class CustomText extends StatelessWidget {
     this.text = '',
     this.fontSize = 16,
     this.fontWeight = FontWeight.normal,
-    this.color = Colors.black,
+    this.color,
     this.alignment = Alignment.topLeft,
     this.maxLines,
     this.height,
   }) : super(key: key);
 
   @override
+  State<CustomText> createState() => _CustomTextState();
+}
+
+class _CustomTextState extends State<CustomText> {
+  @override
   Widget build(BuildContext context) {
     return Container(
-      alignment: alignment,
+      alignment: widget.alignment,
       child: Text(
-        text,
+        widget.text,
         style: TextStyle(
-          fontSize: fontSize,
-          fontWeight: fontWeight,
-          color: color,
-          height: height,
+          fontSize: widget.fontSize,
+          fontWeight: widget.fontWeight,
+          color: widget.color,
+          height: widget.height,
         ),
-        maxLines: maxLines,
+        maxLines: widget.maxLines,
       ),
     );
   }

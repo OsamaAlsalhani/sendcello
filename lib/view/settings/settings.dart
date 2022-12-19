@@ -1,10 +1,16 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:supercellostore/view/settings/themes.dart';
 
-class SettingsView extends StatelessWidget {
+class SettingsView extends StatefulWidget {
   const SettingsView({Key? key}) : super(key: key);
 
+  @override
+  State<SettingsView> createState() => _SettingsViewState();
+}
+
+class _SettingsViewState extends State<SettingsView> {
+  bool isDark = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,19 +24,15 @@ class SettingsView extends StatelessWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    ElevatedButton(
-                      child: const Text('Change Theme',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          )),
+                    IconButton(
+                      icon: isDark
+                          ? const Icon(CupertinoIcons.moon_stars)
+                          : const Icon(CupertinoIcons.sun_dust),
                       onPressed: () {
-                        if (Get.isDarkMode) {
-                          Get.changeTheme(ThemesCus.lightTheme);
-                        } else {
-                          Get.changeTheme(ThemesCus.darkTheme);
-                        }
+                        setState(() {
+                          ThemesCus().changeTheme();
+                          isDark = !isDark;
+                        });
                       },
                     ),
                   ],

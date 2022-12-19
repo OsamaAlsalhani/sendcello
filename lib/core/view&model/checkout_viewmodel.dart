@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:supercellostore/core/services/firestore_checkout.dart';
@@ -6,6 +7,8 @@ import 'cart_viewmodel.dart';
 
 class CheckoutViewModel extends GetxController {
   final FirestoreCheckout firestoreCheckout = FirestoreCheckout();
+  final fbm = FirebaseMessaging.instance;
+  String? token;
   String? name, phone;
 
   var checkouts = <CheckoutModel>[].obs;
@@ -17,6 +20,7 @@ class CheckoutViewModel extends GetxController {
   @override
   void onInit() {
     _getCheckoutsFromFireStore();
+    fbm.getToken().then((value) => token = value);
     super.onInit();
   }
 
@@ -29,6 +33,7 @@ class CheckoutViewModel extends GetxController {
 
   addCheckoutToFireStore() async {
     await FirestoreCheckout().addOrderToFirestore(CheckoutModel(
+      token: token!,
       id: '',
       products: Get.find<CartViewModel>().cartProducts,
       name: name!,

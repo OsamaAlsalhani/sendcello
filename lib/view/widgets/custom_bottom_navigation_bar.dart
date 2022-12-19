@@ -29,7 +29,6 @@ class CustomBottomNavigationBar extends StatelessWidget {
                 text: 'Home',
                 fontSize: 14,
                 alignment: Alignment.center,
-                color: Colors.black,
               ),
             ),
             BottomNavigationBarItem(
@@ -39,7 +38,6 @@ class CustomBottomNavigationBar extends StatelessWidget {
                 text: 'Customer',
                 fontSize: 14,
                 alignment: Alignment.center,
-                color: Colors.black,
               ),
             ),
             BottomNavigationBarItem(
@@ -49,7 +47,6 @@ class CustomBottomNavigationBar extends StatelessWidget {
                 text: 'Cart',
                 fontSize: 14,
                 alignment: Alignment.center,
-                color: Colors.black,
               ),
             ),
           ],

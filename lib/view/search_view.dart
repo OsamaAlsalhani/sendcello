@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:supercellostore/constance.dart';
 import 'package:supercellostore/core/view&model/home_view_model.dart';
 import '../model/product_model.dart';
 import 'product_detail_view.dart';
@@ -145,13 +144,11 @@ class _SearchViewState extends State<SearchView> {
                             CustomText(
                               text: searchProducts[index].description,
                               fontSize: 12,
-                              color: Colors.grey,
                               maxLines: 1,
                             ),
                             CustomText(
                               text: '\$${searchProducts[index].price}',
                               fontSize: 16,
-                              color: primaryColor,
                             ),
                           ],
                         ),

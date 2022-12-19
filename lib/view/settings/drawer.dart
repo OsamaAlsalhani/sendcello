@@ -46,7 +46,6 @@ class DrawerNav extends StatelessWidget {
                               CustomText(
                                 text: 'Name : ${controller.currentUser!.name}',
                                 fontWeight: FontWeight.bold,
-                                color: Colors.black,
                                 alignment: Alignment.center,
                               ),
                               SizedBox(height: 4.h),
@@ -54,7 +53,6 @@ class DrawerNav extends StatelessWidget {
                                 text:
                                     'Email : ${controller.currentUser!.email}',
                                 fontWeight: FontWeight.bold,
-                                color: Colors.black,
                                 alignment: Alignment.center,
                               ),
                             ],

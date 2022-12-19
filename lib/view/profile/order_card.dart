@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:supercellostore/constance.dart';
 import 'package:supercellostore/model/checkout_model.dart';
 import 'package:supercellostore/view/widgets/custom_text.dart';
 
@@ -23,16 +22,13 @@ class OrderCard extends StatelessWidget {
                 children: [
                   CustomText(
                     text: checkoutModel.date,
-                    color: Colors.grey,
                   ),
                   checkoutModel.isAccepted
-                      ? CustomText(
+                      ? const CustomText(
                           text: 'Delivered',
-                          color: Colors.green.shade300,
                         )
-                      : CustomText(
+                      : const CustomText(
                           text: 'Pending',
-                          color: Colors.red.shade300,
                         ),
                 ],
               ),
@@ -76,11 +72,9 @@ class OrderCard extends StatelessWidget {
               ),
               CustomText(
                 text: checkoutModel.name,
-                color: primaryColor,
               ),
               CustomText(
                 text: checkoutModel.phone,
-                color: primaryColor,
               ),
               Divider(
                 thickness: 1,
@@ -91,11 +85,9 @@ class OrderCard extends StatelessWidget {
                 children: [
                   const CustomText(
                     text: 'Total Billed',
-                    color: Colors.blueGrey,
                   ),
                   CustomText(
                     text: '${checkoutModel.totalPrice} S.P',
-                    color: primaryColor,
                   ),
                 ],
               ),

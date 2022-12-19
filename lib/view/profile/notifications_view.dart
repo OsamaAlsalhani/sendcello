@@ -48,7 +48,6 @@ class NotificationsView extends StatelessWidget {
               child: CustomText(
                 text: 'You don\'t have notifications right now.',
                 fontSize: 16,
-                color: Colors.black54,
                 alignment: Alignment.center,
               ),
             ),

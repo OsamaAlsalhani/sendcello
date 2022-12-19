@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:supercellostore/constance.dart';
 import 'package:supercellostore/core/view&model/cart_viewmodel.dart';
 import 'package:supercellostore/view/widgets/custom_text.dart';
 
@@ -49,7 +48,6 @@ class ListViewProductsCart extends StatelessWidget {
                         text:
                             '${controller.cartProducts[index].price} x ${controller.cartProducts[index].quantity}',
                         fontSize: 14,
-                        color: primaryColor,
                       ),
                     ],
                   ),
@@ -68,13 +66,11 @@ class ListViewProductsCart extends StatelessWidget {
               const CustomText(
                 text: 'TOTAL: ',
                 fontSize: 14,
-                color: Colors.grey,
               ),
               CustomText(
                 text: '${controller.totalPrice.toString()} S.P',
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
-                color: primaryColor,
               ),
             ],
           ),

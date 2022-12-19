@@ -30,7 +30,6 @@ class CustomTextFormField extends StatelessWidget {
         CustomText(
           text: title,
           fontSize: 14,
-          color: Colors.grey.shade900,
         ),
         TextFormField(
           decoration: InputDecoration(

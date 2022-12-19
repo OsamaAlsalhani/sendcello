@@ -1,6 +1,10 @@
+// ignore_for_file: must_be_immutable
+import 'dart:convert';
+
+import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:supercellostore/constance.dart';
 import 'package:supercellostore/core/view&model/checkout_viewmodel.dart';
 import 'package:supercellostore/view/widgets/custom_textfield.dart';
@@ -10,7 +14,7 @@ import 'widgets/custom_text.dart';
 
 class CheckoutView extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
-
+  String? sendname = '';
   CheckoutView({Key? key}) : super(key: key);
 
   @override
@@ -70,6 +74,7 @@ class CheckoutView extends StatelessWidget {
                           },
                           onSaved: (value) {
                             controller.name = value;
+                            sendname = controller.name;
                           },
                         ),
                         SizedBox(height: 20.h),
@@ -95,6 +100,7 @@ class CheckoutView extends StatelessWidget {
                             if (_formKey.currentState!.validate()) {
                               _formKey.currentState!.save();
                               await controller.addCheckoutToFireStore();
+                              sendOrderNotifiy(sendname!);
                               Get.dialog(
                                 AlertDialog(
                                   content: SingleChildScrollView(
@@ -110,7 +116,6 @@ class CheckoutView extends StatelessWidget {
                                           text: 'Order Submitted',
                                           fontSize: 24,
                                           fontWeight: FontWeight.bold,
-                                          color: primaryColor,
                                           alignment: Alignment.center,
                                         ),
                                         SizedBox(
@@ -140,6 +145,33 @@ class CheckoutView extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  var serverToken =
+      'AAAAOpQ0fnM:APA91bG7aiAMrac6h3WKzQlYt5no5-OGo7dEQ2sASn7_5M3zT440x_MR3hO1DSu-0nsKPNwib9oTKKMOpJpGLHcXrRnYduXBk2Dha3YutZEYWkW3oMAJaOHsOnxQfRMAbEoaDMr-RkFE';
+
+  sendOrderNotifiy(String body) async {
+    await http.post(
+      Uri.parse('https://fcm.googleapis.com/fcm/send'),
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+        'Authorization': 'key=$serverToken',
+      },
+      body: jsonEncode(
+        <String, dynamic>{
+          'notification': <String, dynamic>{
+            'body': body,
+            'title': 'طلب جديد من ',
+          },
+          'priority': 'high',
+          'data': <String, dynamic>{
+            'click_action': 'FLUTTER_NOTIFICATION_CLICK',
+            'id': '1'
+          },
+          'to': "/topics/Admin"
+        },
       ),
     );
   }

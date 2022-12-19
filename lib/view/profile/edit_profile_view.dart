@@ -117,7 +117,6 @@ class _EditProfileViewState extends State<EditProfileView> {
                                               title: const CustomText(
                                                 text: 'Choose option',
                                                 fontSize: 20,
-                                                color: primaryColor,
                                               ),
                                               content: Column(
                                                 mainAxisSize: MainAxisSize.min,

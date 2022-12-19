@@ -5,7 +5,7 @@ part 'checkout_model.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class CheckoutModel {
-  late String name, phone, totalPrice, date, id;
+  late String name, phone, totalPrice, date, id, token;
   late List<CartModel> products;
   late bool isAccepted, isDelivered, isCancelled;
   CheckoutModel({
@@ -14,6 +14,7 @@ class CheckoutModel {
     required this.phone,
     required this.totalPrice,
     required this.date,
+    required this.token,
     this.isAccepted = false,
     this.isCancelled = false,
     this.isDelivered = false,

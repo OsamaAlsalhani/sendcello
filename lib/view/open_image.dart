@@ -1,8 +1,13 @@
-// ignore_for_file: use_build_context_synchronously
+// ignore_for_file: use_build_context_synchronously, depend_on_referenced_packages, deprecated_member_use
+
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gallery_saver/gallery_saver.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:http/http.dart' as http;
+import 'package:share_plus/share_plus.dart';
 import 'widgets/custom_text.dart';
 
 class OpenImageScreen extends StatelessWidget {
@@ -23,15 +28,33 @@ class OpenImageScreen extends StatelessWidget {
         actions: [
           Padding(
             padding: const EdgeInsets.all(8),
-            child: IconButton(
-              icon: const Icon(Icons.download),
-              onPressed: () async {
-                await GallerySaver.saveImage(imageSlid,
-                    albumName: 'Shal تشيللو');
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('تم التحميل ')),
-                );
-              },
+            child: Row(
+              children: [
+                IconButton(
+                  onPressed: () async {
+                    final url = Uri.parse(imageSlid);
+                    final response = await http.get(url);
+                    final bytes = response.bodyBytes;
+
+                    final temp = await getTemporaryDirectory();
+                    final path = '${temp.path}/image.png';
+                    File(path).writeAsBytesSync(bytes);
+
+                    await Share.shareFiles([path], text: 'shal تشيللو');
+                  },
+                  icon: const Icon(Icons.share),
+                ),
+                IconButton(
+                  onPressed: () async {
+                    await GallerySaver.saveImage(imageSlid,
+                        albumName: 'Shal تشيللو');
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('تم التحميل ')),
+                    );
+                  },
+                  icon: const Icon(Icons.download),
+                ),
+              ],
             ),
           ),
         ],

@@ -7,10 +7,8 @@ import 'package:get/get.dart';
 import 'package:supercellostore/constance.dart';
 import 'package:supercellostore/core/view&model/checkout_viewmodel.dart';
 import 'package:supercellostore/core/view&model/home_view_model.dart';
-import 'package:supercellostore/model/product_model.dart';
 import 'package:supercellostore/view/widgets/images_slider.dart';
 import 'package:supercellostore/view/widgets/list_product.dart';
-import 'product_detail_view.dart';
 import 'search_view.dart';
 import 'widgets/custom_text.dart';
 import 'widgets/list_categories.dart';
@@ -47,28 +45,10 @@ class _HomeViewState extends State<HomeView> {
     await FirebaseMessaging.instance.subscribeToTopic('Cello');
   }
 
-  List<ProductModel> reversedList(List<ProductModel> list) {
-    List<ProductModel> oldlist = list;
-    List<ProductModel> newList = List.from(oldlist.reversed);
-    return newList;
-  }
-
-  offappMessag() async {
-    final HomeViewModel controller = Get.put(HomeViewModel());
-    var message = await FirebaseMessaging.instance.getInitialMessage();
-    List<ProductModel> productModel = controller.products
-        .where((product) => product.name == message?.notification?.title)
-        .toList();
-    if (message != null) {
-      ProductDetailView(productModel[0]);
-    }
-  }
-
   @override
   void initState() {
-    offappMessag();
-    requestPermission();
     jointopics();
+    requestPermission();
     super.initState();
   }
 
@@ -135,9 +115,9 @@ class _HomeViewState extends State<HomeView> {
               ),
               SizedBox(height: 30.h),
               ListViewProducts(
-                  product: reversedList(controller.products
+                  product: controller.products
                       .where((product) => product.category == 'كريب ديجيتال')
-                      .toList())),
+                      .toList()),
               SizedBox(height: 30.h),
               RowName(
                 categoryName: "Offers",
@@ -145,9 +125,9 @@ class _HomeViewState extends State<HomeView> {
               ),
               SizedBox(height: 30.h),
               ListViewProducts(
-                  product: reversedList(controller.products
+                  product: controller.products
                       .where((product) => product.category == 'عروضات')
-                      .toList())),
+                      .toList()),
             ],
           ),
         ),

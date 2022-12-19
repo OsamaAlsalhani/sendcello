@@ -54,7 +54,6 @@ class CartView extends StatelessWidget {
                                     text:
                                         '${controller.cartProducts[index].price} S.P',
                                     fontSize: 16,
-                                    color: primaryColor,
                                   ),
                                   SizedBox(
                                     height: 16.h,
@@ -88,7 +87,6 @@ class CartView extends StatelessWidget {
                                                 .cartProducts[index].quantity
                                                 .toString(),
                                             fontSize: 16,
-                                            color: Colors.black,
                                             alignment: Alignment.center,
                                           ),
                                           GestureDetector(
@@ -135,13 +133,11 @@ class CartView extends StatelessWidget {
                               const CustomText(
                                 text: 'TOTAL',
                                 fontSize: 12,
-                                color: Colors.grey,
                               ),
                               CustomText(
                                 text: '${controller.totalPrice.toString()} S.P',
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
-                                color: primaryColor,
                               ),
                             ],
                           ),

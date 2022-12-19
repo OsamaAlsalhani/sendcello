@@ -32,7 +32,6 @@ class RegisterView extends GetWidget<AuthViewModel> {
                           text: 'Sign Up',
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
-                          color: Colors.black,
                         ),
                         SizedBox(
                           height: 48.h,
