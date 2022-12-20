@@ -50,10 +50,11 @@ class _ProductDetailViewState extends State<ProductDetailView> {
         leading: const BackButton(color: Colors.black),
       ),
       floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add_shopping_cart),
+        backgroundColor: Colors.amber,
         onPressed: () {
           addtocart(selectedProduct);
         },
+        child: const Icon(Icons.add_shopping_cart),
       ),
       body: SizedBox(
         height: MediaQuery.of(context).size.height,

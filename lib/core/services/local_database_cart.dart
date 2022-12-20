@@ -1,5 +1,3 @@
-// ignore_for_file: depend_on_referenced_packages
-
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
@@ -74,8 +72,8 @@ class LocalDatabaseCart {
     await db.update(
       'cartProducts',
       cartModel.toJson(),
-      where: 'productId = ?',
-      whereArgs: [cartModel.productId],
+      where: 'image = ?',
+      whereArgs: [cartModel.image],
     );
   }
 }

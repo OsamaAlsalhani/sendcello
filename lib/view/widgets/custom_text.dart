@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CustomText extends StatefulWidget {
   final String text;
@@ -30,7 +31,7 @@ class _CustomTextState extends State<CustomText> {
     return Container(
       alignment: widget.alignment,
       child: Text(
-        widget.text,
+        widget.text.tr,
         style: TextStyle(
           fontSize: widget.fontSize,
           fontWeight: widget.fontWeight,

@@ -8,6 +8,7 @@ import '../../model/user_model.dart';
 class ProfileViewModel extends GetxController {
   UserModel? _currentUser;
   String? name, email, password, picUrl;
+  final LocalStorageUser localStorageUser = Get.find();
 
   UserModel? get currentUser => _currentUser;
 
@@ -23,7 +24,7 @@ class ProfileViewModel extends GetxController {
 
   getCurrentUser() async {
     _loading = true;
-    _currentUser = await LocalStorageUser.getUserData();
+    _currentUser = await localStorageUser.getuser;
     _loading = false;
     update();
   }
@@ -39,7 +40,7 @@ class ProfileViewModel extends GetxController {
       await FirebaseAuth.instance.currentUser!.updateEmail(email!);
       await FirebaseAuth.instance.currentUser!.updatePassword(password!);
       FirestoreUser().addUserToFirestore(userModel);
-      await LocalStorageUser.setUserData(userModel);
+      await localStorageUser.setUserData(userModel);
       getCurrentUser();
       Get.back();
     } catch (error) {

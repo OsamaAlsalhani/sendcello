@@ -18,6 +18,7 @@ class AuthViewModel extends GetxController {
   String? get user => _user.value?.email;
 
   final _auth = FirebaseAuth.instance;
+  final LocalStorageUser localStorageUser = Get.find();
 
   @override
   void onInit() {
@@ -48,8 +49,8 @@ class AuthViewModel extends GetxController {
     try {
       await _auth
           .signInWithEmailAndPassword(email: email!, password: password!)
-          .then((user) {
-        FirestoreUser().getUserFromFirestore(user.user!.uid).then((doc) {
+          .then((value) async {
+        await FirestoreUser().getUserFromFirestore(value.user!.uid).then((doc) {
           saveUserLocal(
               UserModel.fromJson(doc.data() as Map<dynamic, dynamic>));
         });
@@ -113,10 +114,11 @@ class AuthViewModel extends GetxController {
     }
   }
 
-  void signOut() async {
+  Future<void> signOut() async {
     try {
+      GoogleSignIn().signOut();
       await _auth.signOut();
-      LocalStorageUser.clearUserData();
+      localStorageUser.deleteUserData();
     } catch (error) {
       print(error);
     }
@@ -136,6 +138,6 @@ class AuthViewModel extends GetxController {
   }
 
   void saveUserLocal(UserModel userModel) async {
-    LocalStorageUser.setUserData(userModel);
+    await localStorageUser.setUserData(userModel);
   }
 }

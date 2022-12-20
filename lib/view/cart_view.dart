@@ -17,8 +17,9 @@ class CartView extends StatelessWidget {
     return Scaffold(
       body: GetBuilder<CartViewModel>(
         builder: (controller) => controller.cartProducts.isEmpty
-            ? const Center(
-                child: Text('Empty Cart..'),
+            ? const CustomText(
+                text: 'Empty Cart',
+                alignment: Alignment.center,
               )
             : Column(
                 children: [
@@ -88,6 +89,7 @@ class CartView extends StatelessWidget {
                                                 .toString(),
                                             fontSize: 16,
                                             alignment: Alignment.center,
+                                            color: Colors.amber,
                                           ),
                                           GestureDetector(
                                             child: const Icon(

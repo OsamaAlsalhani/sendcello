@@ -67,16 +67,16 @@ class DrawerNav extends StatelessWidget {
                         children: [
                           ListTile(
                             leading: const Icon(Icons.account_circle),
-                            title: const Text('My Profile'),
+                            title: const CustomText(text: 'My Profile'),
                             onTap: () {
-                              Get.to(const ProfileView());
+                              Get.to(() => const ProfileView());
                             },
                           ),
                           ListTile(
                             leading: const Icon(Icons.settings),
-                            title: const Text('Settings'),
+                            title: const CustomText(text: 'Settings'),
                             onTap: () {
-                              Get.to(const SettingsView());
+                              Get.to(() => const SettingsView());
                             },
                           ),
                           const Divider(
@@ -85,7 +85,7 @@ class DrawerNav extends StatelessWidget {
                           ),
                           ListTile(
                             leading: const Icon(Icons.info),
-                            title: const Text('Info'),
+                            title: const CustomText(text: 'Info'),
                             onTap: () {},
                           ),
                         ],

@@ -32,7 +32,7 @@ class ProfileView extends StatelessWidget {
                       Row(
                         children: [
                           CircleAvatar(
-                            radius: 60.h,
+                            radius: 60.r,
                             backgroundImage:
                                 const AssetImage('assets/images/cello.png'),
                             foregroundImage:
@@ -85,8 +85,8 @@ class ProfileView extends StatelessWidget {
                         title: 'Log Out',
                         onTapFn: () {
                           Get.find<AuthViewModel>().signOut();
-                          Get.offAll(LoginView());
                           leavetopics();
+                          Get.offAll(LoginView());
                         },
                       ),
                     ],

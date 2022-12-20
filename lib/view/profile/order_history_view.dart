@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:supercellostore/core/view&model/checkout_viewmodel.dart';
+import 'package:supercellostore/core/view&model/profile_viewmodel.dart';
 import 'package:supercellostore/view/profile/order_card.dart';
 import '../widgets/custom_text.dart';
 
 class OrderHistoryView extends StatelessWidget {
   OrderHistoryView({Key? key}) : super(key: key);
   final CheckoutViewModel controller = Get.put(CheckoutViewModel());
+  final String userId = Get.find<ProfileViewModel>().currentUser!.userId;
 
   @override
   Widget build(BuildContext context) {
@@ -46,18 +48,16 @@ class OrderHistoryView extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: Obx(
-              () => ListView.separated(
-                itemBuilder: (context, index) {
-                  return OrderCard(
-                    checkoutModel: controller.checkouts[index],
-                  );
-                },
-                separatorBuilder: (context, index) => Divider(
-                  thickness: 1,
-                  color: Colors.grey.shade200,
-                ),
-                itemCount: controller.checkouts.length,
+            child: GetBuilder<CheckoutViewModel>(
+              init: CheckoutViewModel(),
+              builder: (controller) => ListView.builder(
+                itemCount: controller.checkouts
+                    .where((order) => order.userId == userId)
+                    .length,
+                itemBuilder: (context, index) => OrderCard(
+                    checkoutModel: controller.checkouts
+                        .where((order) => order.userId == userId)
+                        .toList()[index]),
               ),
             ),
           ),

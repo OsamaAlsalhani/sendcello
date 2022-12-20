@@ -32,7 +32,6 @@ class CustomButtonSocial extends StatelessWidget {
             CustomText(
               text: title,
               fontSize: 14,
-              color: Colors.black,
             ),
             Container(width: 20.h),
           ],

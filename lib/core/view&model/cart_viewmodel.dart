@@ -62,7 +62,7 @@ class CartViewModel extends GetxController {
   }
 
   decreaseQuantity(int index, String image) async {
-    if (_cartProducts[index].quantity >= 2) {
+    if (_cartProducts[index].quantity != 1) {
       _cartProducts[index].quantity--;
       getTotalPrice();
       await LocalDatabaseCart.db.update(_cartProducts[index]);

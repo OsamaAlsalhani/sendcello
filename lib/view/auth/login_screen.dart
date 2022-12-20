@@ -38,7 +38,6 @@ class LoginView extends GetWidget<AuthViewModel> {
                                 text: 'Welcome',
                                 fontSize: 30,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.black,
                               ),
                               GestureDetector(
                                 onTap: () {
@@ -98,7 +97,7 @@ class LoginView extends GetWidget<AuthViewModel> {
                             height: 20.h,
                           ),
                           const CustomText(
-                            text: 'Forgot Password?',
+                            text: 'Forgot Password',
                             fontSize: 14,
                             alignment: Alignment.centerRight,
                           ),
@@ -127,7 +126,6 @@ class LoginView extends GetWidget<AuthViewModel> {
                   text: '-OR-',
                   fontSize: 18,
                   alignment: Alignment.center,
-                  color: Colors.black,
                 ),
                 SizedBox(
                   height: 43.h,
