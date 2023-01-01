@@ -1,6 +1,5 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:supercellostore/core/view&model/auth_view_modle.dart';
 import 'package:supercellostore/core/view&model/profile_viewmodel.dart';
@@ -30,9 +29,10 @@ class ProfileView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           CircleAvatar(
-                            radius: 60.r,
+                            radius: 60,
                             backgroundImage:
                                 const AssetImage('assets/images/cello.png'),
                             foregroundImage:
@@ -40,14 +40,13 @@ class ProfileView extends StatelessWidget {
                                     ? NetworkImage(controller.currentUser!.pic)
                                     : null,
                           ),
-                          SizedBox(width: 30.w),
                           Column(
                             children: [
                               CustomText(
                                 text: controller.currentUser!.name,
                                 fontSize: 26,
                               ),
-                              SizedBox(height: 6.h),
+                              const SizedBox(height: 6),
                               CustomText(
                                 text: controller.currentUser!.email,
                                 fontSize: 14,
@@ -56,9 +55,7 @@ class ProfileView extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(
-                        height: 50.h,
-                      ),
+                      const SizedBox(height: 50),
                       CustomListTile(
                         icon: const Icon(Icons.edit),
                         title: 'Edit Profile',
@@ -132,9 +129,7 @@ class CustomListTile extends StatelessWidget {
                   color: Colors.black,
                 ),
         ),
-        SizedBox(
-          height: 20.h,
-        ),
+        const SizedBox(height: 20),
       ],
     );
   }

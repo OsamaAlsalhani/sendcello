@@ -1,17 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class CarouselModel {
-  late String image;
+  late List<String> imageSlider;
 
-  CarouselModel({required this.image});
+  CarouselModel({required this.imageSlider});
 
   CarouselModel.fromJson(DocumentSnapshot snap) {
-    image = snap['image'];
+    imageSlider = snap['imageSlider'];
   }
 
   toJson() {
     return {
-      'image': image,
+      'imageSlider': imageSlider,
     };
   }
 }

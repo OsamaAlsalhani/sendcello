@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:supercellostore/core/view&model/home_view_model.dart';
 import 'package:supercellostore/view/category_products_view.dart';
@@ -11,7 +10,7 @@ class ListViewCategories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 50.h,
+      height: 50,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemCount: controller.categories.length,
@@ -28,10 +27,9 @@ class ListViewCategories extends StatelessWidget {
                   ));
             },
             child: Container(
-              height: 40.h,
+              height: 40,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15.r),
-                  color: Colors.amber),
+                  borderRadius: BorderRadius.circular(15), color: Colors.amber),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: CustomText(
@@ -45,7 +43,7 @@ class ListViewCategories extends StatelessWidget {
           );
         },
         separatorBuilder: (context, index) {
-          return SizedBox(width: 20.w);
+          return const SizedBox(width: 20);
         },
       ),
     );

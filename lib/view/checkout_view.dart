@@ -4,7 +4,6 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:supercellostore/constance.dart';
 import 'package:supercellostore/core/view&model/checkout_viewmodel.dart';
 import 'package:supercellostore/view/widgets/custom_textfield.dart';
@@ -23,9 +22,9 @@ class CheckoutView extends StatelessWidget {
       body: Column(
         children: [
           SizedBox(
-            height: 130.h,
+            height: 130,
             child: Padding(
-              padding: EdgeInsets.only(bottom: 24.h, left: 16.w, right: 16.w),
+              padding: const EdgeInsets.only(bottom: 24, left: 16, right: 16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -54,7 +53,7 @@ class CheckoutView extends StatelessWidget {
           Expanded(
             child: SingleChildScrollView(
               child: Padding(
-                padding: EdgeInsets.only(right: 16.w, left: 16.w, bottom: 24.h),
+                padding: const EdgeInsets.only(right: 16, left: 16, bottom: 24),
                 child: Form(
                   key: _formKey,
                   child: GetBuilder<CheckoutViewModel>(
@@ -62,7 +61,7 @@ class CheckoutView extends StatelessWidget {
                     builder: (controller) => Column(
                       children: [
                         const ListViewProductsCart(),
-                        SizedBox(height: 20.h),
+                        const SizedBox(height: 20),
                         CustomTextFormField(
                           title: 'Name',
                           hintText: 'Enter Full Name',
@@ -77,7 +76,7 @@ class CheckoutView extends StatelessWidget {
                             sendname = controller.name;
                           },
                         ),
-                        SizedBox(height: 20.h),
+                        const SizedBox(height: 20),
                         CustomTextFormField(
                           title: 'Phone Number',
                           hintText: '09xxxxxxxx',
@@ -92,7 +91,7 @@ class CheckoutView extends StatelessWidget {
                             controller.phone = value;
                           },
                         ),
-                        SizedBox(height: 38.h),
+                        const SizedBox(height: 38),
                         CustomButton(
                           text: 'SUBMIT',
                           color: primaryColor,
@@ -107,10 +106,10 @@ class CheckoutView extends StatelessWidget {
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
-                                        Icon(
+                                        const Icon(
                                           Icons.check_circle_outline_outlined,
                                           color: primaryColor,
-                                          size: 200.h,
+                                          size: 200,
                                         ),
                                         const CustomText(
                                           text: 'Order Submitted',
@@ -118,9 +117,7 @@ class CheckoutView extends StatelessWidget {
                                           fontWeight: FontWeight.bold,
                                           alignment: Alignment.center,
                                         ),
-                                        SizedBox(
-                                          height: 40.h,
-                                        ),
+                                        const SizedBox(height: 40),
                                         CustomButton(
                                           text: 'Done',
                                           color: primaryColor,

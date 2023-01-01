@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:supercellostore/core/view&model/auth_view_modle.dart';
 import 'package:supercellostore/core/view&model/control_view_model.dart';
 import 'package:supercellostore/view/auth/login_screen.dart';
-import 'package:supercellostore/view/profile/profile_view.dart';
 import 'package:supercellostore/view/settings/drawer.dart';
 import 'package:supercellostore/view/widgets/custom_bottom_navigation_bar.dart';
 import '../core/network_viewmodel.dart';
+import 'search_view.dart';
 import 'widgets/custom_text.dart';
 
 class ControlView extends StatelessWidget {
@@ -35,9 +34,9 @@ class ControlView extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.all(8),
                           child: IconButton(
-                            icon: const Icon(Icons.account_circle),
+                            icon: const Icon(Icons.search),
                             onPressed: () {
-                              Get.to(() => const ProfileView());
+                              Get.to(const SearchView(''));
                             },
                           ),
                         ),
@@ -66,12 +65,10 @@ class NoInternetConnection extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const CircularProgressIndicator(),
-            SizedBox(
-              height: 30.h,
-            ),
-            const CustomText(
+          children: const [
+            CircularProgressIndicator(),
+            SizedBox(height: 30),
+            CustomText(
               text: 'Please check your internet connection..',
               fontSize: 14,
               alignment: Alignment.center,

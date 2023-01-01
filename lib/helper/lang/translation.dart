@@ -54,6 +54,12 @@ const Map<String, String> ar = {
   'Empty Cart': 'السلة فارغة',
   'Arabic': 'عربي',
   'English': 'أنكليزي',
+  'Search': 'البحث',
+  'Feedback': 'ملاحظة',
+  'Branches': 'أفرع',
+  'News': 'أخبار',
+  'FeedBack': 'رأيك فينا',
+  'Send FeedBack': 'أرسال التعليق'
 };
 ///////////////////////////////////////////////////////////////////////////
 const Map<String, String> en = {
@@ -102,4 +108,10 @@ const Map<String, String> en = {
   'Empty Cart': 'Empty Cart',
   'Arabic': 'Arabic',
   'English': 'English',
+  'Search': 'Search',
+  'Feedback': 'Feedback',
+  'Branches': 'Branches',
+  'News': 'News',
+  'FeedBack': 'FeedBack',
+  'Send FeedBack': 'Send FeedBack'
 };

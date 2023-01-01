@@ -1,34 +1,22 @@
-// ignore_for_file: unnecessary_null_comparison, avoid_print
-
-import 'package:supercellostore/main.dart';
 import 'dart:convert';
-
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../model/user_model.dart';
 
 class LocalStorageUser {
-  Future<UserModel?> get getuser async {
-    try {
-      UserModel userModel = await _getUserData();
-      if (userModel == null) {
-        return null;
-      }
-      return userModel;
-    } catch (e) {
-      print(e.toString());
-      return null;
-    }
+  static setUserData(UserModel userModel) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('user', json.encode(userModel.toJson()));
   }
 
-  setUserData(UserModel userModel) async {
-    await sharepref!.setString('user', json.encode(userModel.toJson()));
+  static Future<UserModel> getUserData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return UserModel.fromJson(
+        json.decode(prefs.getString('user')!) as Map<dynamic, dynamic>);
   }
 
-  deleteUserData() async {
-    await sharepref!.clear();
-  }
-
-  _getUserData() async {
-    var value = sharepref!.getString('user');
-    return UserModel.fromJson(json.decode(value!));
+  static clearUserData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.remove('user');
+    await prefs.clear();
   }
 }

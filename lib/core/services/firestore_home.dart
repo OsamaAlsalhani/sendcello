@@ -1,10 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:supercellostore/model/carousel_model.dart';
 import 'package:supercellostore/model/category_model.dart';
-
 import 'package:supercellostore/model/product_model.dart';
 
 class FirestoreHome {
+  final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
   Stream<List<CategoryModel>> getCategories() => FirebaseFirestore.instance
       .collection('Categories')
       .snapshots()
@@ -18,9 +17,15 @@ class FirestoreHome {
       .map((snapshot) =>
           snapshot.docs.map((doc) => ProductModel.fromJson(doc)).toList());
 
-  Stream<List<CarouselModel>> getCarousel() => FirebaseFirestore.instance
-      .collection('Carousel')
-      .snapshots()
-      .map((snapshot) =>
-          snapshot.docs.map((doc) => CarouselModel.fromJson(doc)).toList());
+  Future<List?> get getCarouselImage async {
+    try {
+      final data = await _firebaseFirestore
+          .collection('Carousel')
+          .doc('haYnP3XEFL3TukVHPxby')
+          .get();
+      return data.data()!['imageSlider'];
+    } catch (e) {
+      return null;
+    }
+  }
 }

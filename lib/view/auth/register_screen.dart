@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:supercellostore/core/view&model/auth_view_modle.dart';
 import 'package:supercellostore/view/widgets/custom_textfield.dart';
@@ -18,12 +17,12 @@ class RegisterView extends GetWidget<AuthViewModel> {
       body: SingleChildScrollView(
         child: Padding(
           padding:
-              EdgeInsets.only(right: 16.w, left: 16.w, top: 32.h, bottom: 44.h),
+              const EdgeInsets.only(right: 16, left: 16, top: 32, bottom: 44),
           child: Column(
             children: [
               Card(
                 child: Padding(
-                  padding: EdgeInsets.all(16.h),
+                  padding: const EdgeInsets.all(16),
                   child: Form(
                     key: _formKey,
                     child: Column(
@@ -33,9 +32,7 @@ class RegisterView extends GetWidget<AuthViewModel> {
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
                         ),
-                        SizedBox(
-                          height: 48.h,
-                        ),
+                        const SizedBox(height: 48),
                         CustomTextFormField(
                           title: 'Name',
                           hintText: 'Enter Your Name',
@@ -49,9 +46,7 @@ class RegisterView extends GetWidget<AuthViewModel> {
                             controller.name = value;
                           },
                         ),
-                        SizedBox(
-                          height: 38.h,
-                        ),
+                        const SizedBox(height: 38),
                         CustomTextFormField(
                           title: 'Email',
                           hintText: 'example@gmail.com',
@@ -66,9 +61,7 @@ class RegisterView extends GetWidget<AuthViewModel> {
                             controller.email = value;
                           },
                         ),
-                        SizedBox(
-                          height: 38.h,
-                        ),
+                        const SizedBox(height: 38),
                         CustomTextFormField(
                           title: 'Password',
                           hintText: '***********',
@@ -83,9 +76,7 @@ class RegisterView extends GetWidget<AuthViewModel> {
                             controller.password = value;
                           },
                         ),
-                        SizedBox(
-                          height: 60.h,
-                        ),
+                        const SizedBox(height: 60),
                         CustomButton(
                           text: 'SIGN UP',
                           onPressed: () {

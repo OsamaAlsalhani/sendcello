@@ -1,15 +1,13 @@
 // ignore_for_file: avoid_web_libraries_in_flutter
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:supercellostore/constance.dart';
-import 'package:supercellostore/model/carousel_model.dart';
 import 'package:supercellostore/view/open_image.dart';
 
 class ImagesSlider extends StatefulWidget {
-  final List<CarouselModel> carousel;
+  final List carousel;
 
   const ImagesSlider({super.key, required this.carousel});
 
@@ -26,12 +24,12 @@ class _ImagesSliderState extends State<ImagesSlider> {
         border: Border.all(color: primaryColor),
         borderRadius: BorderRadius.circular(15),
       ),
-      height: 200.h,
-      width: 300.w,
+      height: 200,
+      width: 300,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(height: 8.h),
+          const SizedBox(height: 8),
           CarouselSlider.builder(
             options: CarouselOptions(
                 enableInfiniteScroll: false,
@@ -46,11 +44,11 @@ class _ImagesSliderState extends State<ImagesSlider> {
                 }),
             itemCount: widget.carousel.length,
             itemBuilder: (context, index, realINdex) {
-              final imageSlid = widget.carousel[index].image;
+              final imageSlid = widget.carousel[index];
               return buildImage(imageSlid, index);
             },
           ),
-          SizedBox(height: 12.h),
+          const SizedBox(height: 12),
           buildIndicator(widget.carousel.length),
         ],
       ),
@@ -59,14 +57,14 @@ class _ImagesSliderState extends State<ImagesSlider> {
 
   Widget buildImage(String imageSlid, int index) {
     return Container(
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(15.r)),
-      margin: EdgeInsets.symmetric(horizontal: 12.w),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
+      margin: const EdgeInsets.symmetric(horizontal: 12),
       child: GestureDetector(
         onTap: () {
           Get.to(() => OpenImageScreen(imageSlid: imageSlid));
         },
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(15.r),
+          borderRadius: BorderRadius.circular(15),
           child: Image.network(
             imageSlid,
             fit: BoxFit.cover,

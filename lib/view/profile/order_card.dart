@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:supercellostore/constance.dart';
 import 'package:supercellostore/model/checkout_model.dart';
 import 'package:supercellostore/view/widgets/custom_text.dart';
@@ -12,10 +11,10 @@ class OrderCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 6.h),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
       child: Card(
         child: Padding(
-          padding: EdgeInsets.all(16.h),
+          padding: const EdgeInsets.all(16),
           child: Column(
             children: [
               Row(

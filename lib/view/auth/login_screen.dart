@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:supercellostore/constance.dart';
 import 'package:supercellostore/core/view&model/auth_view_modle.dart';
@@ -20,13 +19,13 @@ class LoginView extends GetWidget<AuthViewModel> {
       builder: (context, orientation) => Scaffold(
         body: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.only(
-                right: 16.w, left: 16.w, top: 75.h, bottom: 42.h),
+            padding:
+                const EdgeInsets.only(right: 16, left: 16, top: 75, bottom: 42),
             child: Column(
               children: [
                 Card(
                   child: Padding(
-                    padding: EdgeInsets.all(16.h),
+                    padding: const EdgeInsets.all(16),
                     child: Form(
                       key: _formKey,
                       child: Column(
@@ -51,17 +50,13 @@ class LoginView extends GetWidget<AuthViewModel> {
                               ),
                             ],
                           ),
-                          SizedBox(
-                            height: 10.h,
-                          ),
+                          const SizedBox(height: 10),
                           const CustomText(
                             text: 'Sign in to Continue',
                             fontSize: 14,
                             color: Colors.grey,
                           ),
-                          SizedBox(
-                            height: 48.h,
-                          ),
+                          const SizedBox(height: 48),
                           CustomTextFormField(
                             title: 'Email',
                             hintText: 'example@gmail.com',
@@ -76,9 +71,7 @@ class LoginView extends GetWidget<AuthViewModel> {
                               controller.email = value;
                             },
                           ),
-                          SizedBox(
-                            height: 38.h,
-                          ),
+                          const SizedBox(height: 38),
                           CustomTextFormField(
                             title: 'Password',
                             hintText: '***********',
@@ -93,17 +86,13 @@ class LoginView extends GetWidget<AuthViewModel> {
                               controller.password = value;
                             },
                           ),
-                          SizedBox(
-                            height: 20.h,
-                          ),
+                          const SizedBox(height: 20),
                           const CustomText(
                             text: 'Forgot Password',
                             fontSize: 14,
                             alignment: Alignment.centerRight,
                           ),
-                          SizedBox(
-                            height: 20.h,
-                          ),
+                          const SizedBox(height: 20),
                           CustomButton(
                             text: 'SIGN IN',
                             color: primaryColor,
@@ -119,17 +108,13 @@ class LoginView extends GetWidget<AuthViewModel> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 28.h,
-                ),
+                const SizedBox(height: 28),
                 const CustomText(
                   text: '-OR-',
                   fontSize: 18,
                   alignment: Alignment.center,
                 ),
-                SizedBox(
-                  height: 43.h,
-                ),
+                const SizedBox(height: 43),
                 CustomButtonSocial(
                   title: 'Sign In with Facebook',
                   image: 'facebook',
@@ -137,9 +122,7 @@ class LoginView extends GetWidget<AuthViewModel> {
                     controller.signInWithFacebookAccount();
                   },
                 ),
-                SizedBox(
-                  height: 20.h,
-                ),
+                const SizedBox(height: 20),
                 CustomButtonSocial(
                   title: 'Sign In with Google',
                   image: 'google',

@@ -2,7 +2,6 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:supercellostore/constance.dart';
 import 'package:supercellostore/core/view&model/profile_viewmodel.dart';
@@ -31,9 +30,9 @@ class _EditProfileViewState extends State<EditProfileView> {
       body: Column(
         children: [
           SizedBox(
-            height: 130.h,
+            height: 130,
             child: Padding(
-              padding: EdgeInsets.only(bottom: 24.h, left: 16.w, right: 16.w),
+              padding: const EdgeInsets.only(bottom: 24, left: 16, right: 16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -65,10 +64,10 @@ class _EditProfileViewState extends State<EditProfileView> {
               child: SingleChildScrollView(
                 child: Padding(
                   padding:
-                      EdgeInsets.only(right: 16.w, left: 16.w, bottom: 24.h),
+                      const EdgeInsets.only(right: 16, left: 16, bottom: 24),
                   child: Card(
                     child: Padding(
-                      padding: EdgeInsets.all(16.h),
+                      padding: const EdgeInsets.all(16),
                       child: loginMethod == 'google.com' ||
                               loginMethod == 'facebook.com'
                           ? Column(
@@ -79,11 +78,11 @@ class _EditProfileViewState extends State<EditProfileView> {
                                       ? 'assets/icons/google.png'
                                       : 'assets/icons/facebook.png',
                                   fit: BoxFit.cover,
-                                  height: 40.h,
-                                  width: 40.h,
+                                  height: 40,
+                                  width: 40,
                                 ),
-                                SizedBox(
-                                  height: 12.h,
+                                const SizedBox(
+                                  height: 12,
                                 ),
                                 CustomText(
                                   text: loginMethod == 'google.com'
@@ -101,7 +100,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                                   Row(
                                     children: [
                                       CircleAvatar(
-                                        radius: 60.h,
+                                        radius: 60,
                                         backgroundImage: const AssetImage(
                                             'assets/images/cello.png'),
                                         foregroundImage: controller.imageFile !=
@@ -109,7 +108,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                                             ? FileImage(controller.imageFile!)
                                             : null,
                                       ),
-                                      SizedBox(width: 40.w),
+                                      const SizedBox(width: 40),
                                       ElevatedButton(
                                         onPressed: () {
                                           Get.dialog(
@@ -170,7 +169,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                                       ),
                                     ],
                                   ),
-                                  SizedBox(height: 38.h),
+                                  const SizedBox(height: 38),
                                   CustomTextFormField(
                                     title: 'Name',
                                     hintText: Get.find<ProfileViewModel>()
@@ -189,9 +188,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                                       Get.find<ProfileViewModel>().name = value;
                                     },
                                   ),
-                                  SizedBox(
-                                    height: 38.h,
-                                  ),
+                                  const SizedBox(height: 38),
                                   Column(
                                     children: [
                                       CustomTextFormField(
@@ -216,9 +213,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                                               value;
                                         },
                                       ),
-                                      SizedBox(
-                                        height: 38.h,
-                                      ),
+                                      const SizedBox(height: 38),
                                       CustomTextFormField(
                                         title: 'Password',
                                         hintText: '',
@@ -237,9 +232,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                                       ),
                                     ],
                                   ),
-                                  SizedBox(
-                                    height: 50.h,
-                                  ),
+                                  const SizedBox(height: 50),
                                   _isLoading
                                       ? const CircularProgressIndicator()
                                       : CustomButton(

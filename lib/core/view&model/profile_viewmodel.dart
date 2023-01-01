@@ -24,7 +24,7 @@ class ProfileViewModel extends GetxController {
 
   getCurrentUser() async {
     _loading = true;
-    _currentUser = await localStorageUser.getuser;
+    _currentUser = await LocalStorageUser.getUserData();
     _loading = false;
     update();
   }
@@ -40,7 +40,7 @@ class ProfileViewModel extends GetxController {
       await FirebaseAuth.instance.currentUser!.updateEmail(email!);
       await FirebaseAuth.instance.currentUser!.updatePassword(password!);
       FirestoreUser().addUserToFirestore(userModel);
-      await localStorageUser.setUserData(userModel);
+      await LocalStorageUser.setUserData(userModel);
       getCurrentUser();
       Get.back();
     } catch (error) {

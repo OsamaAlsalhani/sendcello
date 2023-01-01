@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:supercellostore/view/widgets/custom_text.dart';
 
 class CustomButtonSocial extends StatelessWidget {
@@ -19,21 +18,21 @@ class CustomButtonSocial extends StatelessWidget {
     return OutlinedButton(
       onPressed: onPressedFn,
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 30.w),
+        padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 30),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Image.asset(
               'assets/icons/$image.png',
               fit: BoxFit.cover,
-              height: 20.h,
-              width: 20.h,
+              height: 20,
+              width: 20,
             ),
             CustomText(
               text: title,
               fontSize: 14,
             ),
-            Container(width: 20.h),
+            Container(width: 20),
           ],
         ),
       ),

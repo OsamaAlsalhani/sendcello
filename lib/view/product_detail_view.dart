@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:supercellostore/constance.dart';
 import 'package:supercellostore/core/view&model/cart_viewmodel.dart';
@@ -64,8 +63,8 @@ class _ProductDetailViewState extends State<ProductDetailView> {
               padding: const EdgeInsets.all(8.0),
               child: Container(
                 padding: const EdgeInsets.all(16.0),
-                decoration: BoxDecoration(
-                  boxShadow: const [
+                decoration: const BoxDecoration(
+                  boxShadow: [
                     BoxShadow(
                       offset: Offset(0, 5),
                       blurRadius: 20,
@@ -74,8 +73,8 @@ class _ProductDetailViewState extends State<ProductDetailView> {
                   ],
                   color: primaryColor,
                   borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(15.r),
-                    bottomRight: Radius.circular(15.r),
+                    topLeft: Radius.circular(15),
+                    bottomRight: Radius.circular(15),
                   ),
                 ),
                 child: Column(
@@ -86,13 +85,13 @@ class _ProductDetailViewState extends State<ProductDetailView> {
                       fontWeight: FontWeight.bold,
                       alignment: Alignment.center,
                     ),
-                    SizedBox(height: 20.h),
+                    const SizedBox(height: 20),
                     CustomText(
                       text: widget._productModel.description,
                       fontSize: 18,
                       alignment: Alignment.center,
                     ),
-                    SizedBox(height: 20.h),
+                    const SizedBox(height: 20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -101,7 +100,7 @@ class _ProductDetailViewState extends State<ProductDetailView> {
                           fontSize: 18,
                           alignment: Alignment.bottomCenter,
                         ),
-                        SizedBox(width: 10.w),
+                        const SizedBox(width: 10),
                         const CustomText(
                           text: 'السعر',
                           fontSize: 20,
@@ -151,12 +150,15 @@ class _ProductDetailViewState extends State<ProductDetailView> {
                 ],
               ),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(15),
+                borderRadius: const BorderRadius.only(
+                  topRight: Radius.circular(12),
+                  bottomLeft: Radius.circular(12),
+                ),
                 child: Hero(
                   tag: image,
                   child: Image.network(
-                    height: 200.h,
-                    width: 200.w,
+                    height: 180,
+                    width: 180,
                     image,
                     fit: BoxFit.cover,
                   ),
@@ -202,42 +204,5 @@ class _ProductDetailViewState extends State<ProductDetailView> {
 addtolist(ProductModel list, List<SelectedModel> selected) {
   for (var i = 0; i < list.imageSlider.length; i++) {
     selected.add(SelectedModel(list.imageSlider[i], false));
-  }
-}
-
-class RoundedShapeInfo extends StatelessWidget {
-  final String title;
-  final Widget content;
-
-  const RoundedShapeInfo({
-    Key? key,
-    required this.title,
-    required this.content,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 40.h,
-      width: 160.w,
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey.shade400),
-        borderRadius: BorderRadius.circular(25.r),
-      ),
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            CustomText(
-              text: title,
-              fontSize: 14,
-              alignment: Alignment.center,
-            ),
-            content,
-          ],
-        ),
-      ),
-    );
   }
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:supercellostore/core/view&model/control_view_model.dart';
 import 'package:supercellostore/view/widgets/custom_text.dart';
@@ -10,7 +9,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 60.h,
+      height: 60,
       child: GetBuilder<ControlViewModel>(
         builder: (controller) => BottomNavigationBar(
           showSelectedLabels: false,

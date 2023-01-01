@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:supercellostore/constance.dart';
 import 'package:supercellostore/model/product_model.dart';
@@ -14,7 +13,7 @@ class ListViewProducts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 320.h,
+      height: 320,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemCount: product.length,
@@ -24,25 +23,25 @@ class ListViewProducts extends StatelessWidget {
               Get.to(() => ProductDetailView(product[index]));
             },
             child: SizedBox(
-              width: 164.w,
+              width: 164,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(12.r),
-                        bottomRight: Radius.circular(12.r),
+                        topLeft: Radius.circular(12),
+                        bottomRight: Radius.circular(12),
                       ),
                       color: Colors.white,
                     ),
-                    height: 240.h,
-                    width: 164.w,
+                    height: 240,
+                    width: 164,
                     child: ClipRRect(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(12.r),
-                        bottomRight: Radius.circular(12.r),
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(12),
+                        bottomRight: Radius.circular(12),
                       ),
                       child: Image.network(
                         product[index].imageSlider[0],
@@ -70,7 +69,7 @@ class ListViewProducts extends StatelessWidget {
           );
         },
         separatorBuilder: (context, index) {
-          return SizedBox(width: 15.w);
+          return const SizedBox(width: 15);
         },
       ),
     );

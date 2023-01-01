@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:supercellostore/constance.dart';
 import '../model/product_model.dart';
@@ -27,8 +26,8 @@ class CategoryProductsView extends StatelessWidget {
         children: [
           Expanded(
             child: Padding(
-              padding: EdgeInsets.only(
-                  right: 16.w, left: 16.w, bottom: 24.h, top: 24.h),
+              padding: const EdgeInsets.only(
+                  right: 16, left: 16, bottom: 24, top: 24),
               child: GridView.builder(
                 padding: const EdgeInsets.all(0),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -46,22 +45,18 @@ class CategoryProductsView extends StatelessWidget {
                       );
                     },
                     child: SizedBox(
-                      width: 164.w,
+                      width: 164,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(4.r),
-                              color: Colors.white,
-                            ),
-                            height: 230.h,
-                            width: 164.w,
+                          SizedBox(
+                            height: 230,
+                            width: 164,
                             child: ClipRRect(
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(12.r),
-                                bottomRight: Radius.circular(12.r),
+                              borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(12),
+                                bottomRight: Radius.circular(12),
                               ),
                               child: Image.network(
                                 products[index].imageSlider[0],

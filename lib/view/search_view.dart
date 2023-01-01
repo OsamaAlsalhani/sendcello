@@ -1,8 +1,8 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:supercellostore/constance.dart';
 import 'package:supercellostore/core/view&model/home_view_model.dart';
 import '../model/product_model.dart';
 import 'product_detail_view.dart';
@@ -40,9 +40,9 @@ class _SearchViewState extends State<SearchView> {
       body: Column(
         children: [
           SizedBox(
-            height: 130.h,
+            height: 130,
             child: Padding(
-              padding: EdgeInsets.only(bottom: 24.h, left: 16.w, right: 16.w),
+              padding: const EdgeInsets.only(bottom: 24, left: 16, right: 16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -71,12 +71,12 @@ class _SearchViewState extends State<SearchView> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Container(
-              height: 49.h,
+              height: 49,
               decoration: BoxDecoration(
-                color: Colors.grey.shade200,
-                borderRadius: BorderRadius.circular(45.r),
+                color: primaryColor,
+                borderRadius: BorderRadius.circular(45),
               ),
               child: TextFormField(
                 decoration: const InputDecoration(
@@ -95,12 +95,10 @@ class _SearchViewState extends State<SearchView> {
               ),
             ),
           ),
-          SizedBox(
-            height: 24.h,
-          ),
+          const SizedBox(height: 24),
           Expanded(
             child: Padding(
-              padding: EdgeInsets.only(right: 16.w, left: 16.w, bottom: 24.h),
+              padding: const EdgeInsets.only(right: 16, left: 16, bottom: 12),
               child: GetBuilder<HomeViewModel>(
                 init: Get.find<HomeViewModel>(),
                 builder: (controller) => GridView.builder(
@@ -120,21 +118,23 @@ class _SearchViewState extends State<SearchView> {
                         );
                       },
                       child: SizedBox(
-                        width: 164.w,
+                        width: 164,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(4.r),
-                                color: Colors.white,
-                              ),
-                              height: 240.h,
-                              width: 164.w,
-                              child: Image.network(
-                                searchProducts[index].imageSlider[0],
-                                fit: BoxFit.cover,
+                            SizedBox(
+                              height: 230,
+                              width: 164,
+                              child: ClipRRect(
+                                borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(12),
+                                  bottomRight: Radius.circular(12),
+                                ),
+                                child: Image.network(
+                                  searchProducts[index].imageSlider[0],
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
                             CustomText(
@@ -147,8 +147,9 @@ class _SearchViewState extends State<SearchView> {
                               maxLines: 1,
                             ),
                             CustomText(
-                              text: '\$${searchProducts[index].price}',
+                              text: '${searchProducts[index].price} .SP',
                               fontSize: 16,
+                              color: primaryColor,
                             ),
                           ],
                         ),

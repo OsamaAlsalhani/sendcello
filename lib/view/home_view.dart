@@ -2,14 +2,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:supercellostore/constance.dart';
+import 'package:supercellostore/core/services/firestore_home.dart';
 import 'package:supercellostore/core/view&model/checkout_viewmodel.dart';
 import 'package:supercellostore/core/view&model/home_view_model.dart';
 import 'package:supercellostore/view/widgets/images_slider.dart';
 import 'package:supercellostore/view/widgets/list_product.dart';
-import 'search_view.dart';
+import 'package:supercellostore/view/button/rownews.dart';
 import 'widgets/custom_text.dart';
 import 'widgets/list_categories.dart';
 import 'widgets/rowname.dart';
@@ -23,6 +24,8 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   final HomeViewModel controller = Get.put(HomeViewModel());
+  final FirestoreHome firestoreHome = FirestoreHome();
+  List img = [];
 
   var fbm = FirebaseMessaging.instance;
   requestPermission() async {
@@ -45,6 +48,15 @@ class _HomeViewState extends State<HomeView> {
     await FirebaseMessaging.instance.subscribeToTopic('Cello');
   }
 
+  get _getCarouselFromFireStore async {
+    var imageSlider = await firestoreHome.getCarouselImage;
+    if (mounted) {
+      setState(() {
+        img = imageSlider!;
+      });
+    }
+  }
+
   @override
   void initState() {
     jointopics();
@@ -54,76 +66,81 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
+    _getCarouselFromFireStore;
     Get.put(CheckoutViewModel());
     return Scaffold(
       body: Obx(
         () => SingleChildScrollView(
-          padding:
-              EdgeInsets.only(top: 25.h, bottom: 14.h, right: 16.w, left: 16.w),
+          padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
+              ImagesSlider(
+                carousel: img,
+              ),
+              const SizedBox(height: 19),
               Container(
-                height: 49.h,
                 decoration: BoxDecoration(
-                  color: Colors.grey.shade200,
-                  borderRadius: BorderRadius.circular(45.r),
+                  border: Border.all(color: primaryColor),
+                  borderRadius: BorderRadius.circular(15),
                 ),
-                child: TextFormField(
-                  style: const TextStyle(color: Colors.black),
-                  decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    prefixIcon: Icon(
-                      Icons.search,
-                      color: Colors.black,
-                    ),
-                  ),
-                  onFieldSubmitted: (value) {
-                    Get.to(SearchView(value));
+                height: 60,
+                width: 150,
+                child: GestureDetector(
+                  onTap: () {
+                    const number = ClipboardData(text: '+963944700444');
+                    Clipboard.setData(number);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('تم النسخ الى الحافظة')),
+                    );
                   },
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      CustomText(
+                        text: 'للتواصل جملة',
+                        alignment: Alignment.center,
+                      ),
+                      CustomText(
+                        text: '+963944700444',
+                        color: Colors.amber,
+                        alignment: Alignment.center,
+                      ),
+                    ],
+                  ),
                 ),
               ),
-              SizedBox(height: 25.h),
-              const CustomText(
-                text: 'Categories',
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: primaryColor,
-              ),
-              SizedBox(height: 19.h),
+              const SizedBox(height: 25),
+              const RowNews(),
+              const SizedBox(height: 25),
               ListViewCategories(),
-              SizedBox(height: 30.h),
+              const SizedBox(height: 30),
               RowName(
                 categoryName: 'New Form Cello',
                 productCategoryName: 'new',
               ),
-              SizedBox(height: 30.h),
+              const SizedBox(height: 30),
               ListViewProducts(
                 product: controller.products
                     .where((product) => product.category == 'new')
                     .toList(),
               ),
-              SizedBox(height: 30.h),
-              const Divider(),
-              ImagesSlider(
-                carousel: controller.carousels.toList(),
-              ),
-              SizedBox(height: 19.h),
+              const SizedBox(height: 30),
               const Divider(),
               RowName(
                 categoryName: 'Creep Digital',
                 productCategoryName: 'كريب ديجيتال',
               ),
-              SizedBox(height: 30.h),
+              const SizedBox(height: 30),
               ListViewProducts(
                   product: controller.products
                       .where((product) => product.category == 'كريب ديجيتال')
                       .toList()),
-              SizedBox(height: 30.h),
+              const SizedBox(height: 30),
               RowName(
                 categoryName: "Offers",
                 productCategoryName: 'عروضات',
               ),
-              SizedBox(height: 30.h),
+              const SizedBox(height: 30),
               ListViewProducts(
                   product: controller.products
                       .where((product) => product.category == 'عروضات')

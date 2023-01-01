@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:supercellostore/core/view&model/cart_viewmodel.dart';
 import 'package:supercellostore/view/widgets/custom_text.dart';
@@ -13,26 +12,26 @@ class ListViewProductsCart extends StatelessWidget {
       builder: (controller) => Column(
         children: [
           SizedBox(
-            height: 160.h,
+            height: 160,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               itemCount: controller.cartProducts.length,
               itemBuilder: (context, index) {
                 return SizedBox(
-                  width: 125.w,
+                  width: 125,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4.r),
+                          borderRadius: BorderRadius.circular(4),
                           color: Colors.white,
                         ),
-                        height: 115.h,
-                        width: 115.w,
+                        height: 115,
+                        width: 115,
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(12.r),
+                          borderRadius: BorderRadius.circular(12),
                           child: Image.network(
                             controller.cartProducts[index].image,
                             fit: BoxFit.cover,
@@ -54,11 +53,11 @@ class ListViewProductsCart extends StatelessWidget {
                 );
               },
               separatorBuilder: (context, index) {
-                return SizedBox(width: 15.w);
+                return const SizedBox(width: 15);
               },
             ),
           ),
-          SizedBox(height: 12.h),
+          const SizedBox(height: 12),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
