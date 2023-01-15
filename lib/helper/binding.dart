@@ -10,13 +10,14 @@ import 'package:supercellostore/core/view&model/profile_viewmodel.dart';
 class Binding extends Bindings {
   @override
   void dependencies() {
+    Get.lazyPut(() => LocalStorageUser());
     Get.lazyPut(() => AuthViewModel());
     Get.lazyPut(() => HomeViewModel());
     Get.lazyPut(() => NetworkViewModel());
     Get.lazyPut(() => ProfileViewModel());
+    Get.put(ProfileViewModel());
     Get.put(NetworkViewModel());
     Get.put(FeedBackController());
-    Get.put(LocalStorageUser());
     Get.put(CartViewModel());
   }
 }

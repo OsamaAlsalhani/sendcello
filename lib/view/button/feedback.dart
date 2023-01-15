@@ -9,7 +9,7 @@ import 'package:supercellostore/view/widgets/custom_textfield.dart';
 
 class FeedBackView extends StatelessWidget {
   FeedBackView({super.key});
-  final String userId = Get.find<ProfileViewModel>().currentUser!.userId;
+  final ProfileViewModel pController = Get.find();
   final FeedBackController controller = Get.find();
   final _formKey = GlobalKey<FormState>();
 
@@ -77,11 +77,13 @@ class FeedBackView extends StatelessWidget {
             child: Obx(
               () => ListView.builder(
                 itemCount: controller.feedbacks
-                    .where((feed) => feed.userId == userId)
+                    .where((feed) =>
+                        feed.userId == pController.currentUser!.userId)
                     .length,
                 itemBuilder: (context, index) => feedBackCard(controller
                     .feedbacks
-                    .where((feed) => feed.userId == userId)
+                    .where((feed) =>
+                        feed.userId == pController.currentUser!.userId)
                     .toList()[index]),
               ),
             ),
