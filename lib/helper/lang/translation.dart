@@ -59,7 +59,10 @@ const Map<String, String> ar = {
   'Branches': 'أفرع',
   'News': 'أخبار',
   'FeedBack': 'رأيك فينا',
-  'Send FeedBack': 'أرسال التعليق'
+  'Send FeedBack': 'أرسال التعليق',
+  'Location': 'العنوان',
+  'Enter Full Name': 'أدخل أسمك الكامل',
+  'Enter Your Location': 'أدخل عنوانك منطقة - شارع - بناء - طابق',
 };
 ///////////////////////////////////////////////////////////////////////////
 const Map<String, String> en = {
@@ -113,5 +116,8 @@ const Map<String, String> en = {
   'Branches': 'Branches',
   'News': 'News',
   'FeedBack': 'FeedBack',
-  'Send FeedBack': 'Send FeedBack'
+  'Send FeedBack': 'Send FeedBack',
+  'Location': 'Location',
+  'Enter Full Name': 'Enter Full Name',
+  'Enter Your Location': 'Enter Your Location Zone-St-Bd-F',
 };

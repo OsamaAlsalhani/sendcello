@@ -11,7 +11,7 @@ class CheckoutViewModel extends GetxController {
   final fbm = FirebaseMessaging.instance;
 
   String? token;
-  String? name, phone;
+  String? name, phone, locate;
 
   var checkouts = <CheckoutModel>[].obs;
 
@@ -38,6 +38,7 @@ class CheckoutViewModel extends GetxController {
     await FirestoreCheckout().addOrderToFirestore(CheckoutModel(
       userId: Get.find<ProfileViewModel>().currentUser!.userId,
       token: token!,
+      locate: locate!,
       id: '',
       products: Get.find<CartViewModel>().cartProducts,
       name: name!,

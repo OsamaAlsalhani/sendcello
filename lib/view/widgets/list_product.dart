@@ -52,16 +52,21 @@ class ListViewProducts extends StatelessWidget {
                   CustomText(
                     text: product[index].name,
                     fontSize: 16,
+                    color: secondColor,
+                    fontWeight: FontWeight.bold,
                   ),
                   CustomText(
                     text: product[index].description,
                     fontSize: 12,
                     maxLines: 1,
+                    color: secondColor,
+                    fontWeight: FontWeight.bold,
                   ),
                   CustomText(
                     text: '${product[index].price} S.P',
                     fontSize: 16,
-                    color: primaryColor,
+                    color: const Color(0xFFC0846C),
+                    fontWeight: FontWeight.bold,
                   ),
                 ],
               ),

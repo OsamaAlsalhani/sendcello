@@ -49,7 +49,7 @@ class _ProductDetailViewState extends State<ProductDetailView> {
         leading: const BackButton(color: Colors.black),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.amber,
+        backgroundColor: primaryColor,
         onPressed: () {
           addtocart(selectedProduct);
         },
@@ -187,7 +187,7 @@ class _ProductDetailViewState extends State<ProductDetailView> {
                 ? const Icon(
                     size: 50,
                     Icons.check_circle,
-                    color: Colors.amber,
+                    color: Colors.amberAccent,
                   )
                 : const Icon(
                     size: 50,

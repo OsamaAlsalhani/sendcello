@@ -6,7 +6,7 @@ part 'checkout_model.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class CheckoutModel {
-  late String name, phone, totalPrice, date, id, token, userId;
+  late String name, phone, totalPrice, date, id, token, userId, locate;
   late List<CartModel> products;
   late bool isAccepted, isDelivered, isCancelled;
 
@@ -22,6 +22,7 @@ class CheckoutModel {
     this.isDelivered = false,
     required this.userId,
     required this.id,
+    required this.locate,
   });
 
   factory CheckoutModel.fromJson(DocumentSnapshot json) =>

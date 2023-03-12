@@ -64,7 +64,7 @@ class CheckoutView extends StatelessWidget {
                         const SizedBox(height: 20),
                         CustomTextFormField(
                           title: 'Name',
-                          hintText: 'Enter Full Name',
+                          hintText: 'Enter Full Name'.tr,
                           validator: (value) {
                             if (value!.isEmpty || value.length < 4) {
                               return 'Please enter valid name.';
@@ -74,6 +74,20 @@ class CheckoutView extends StatelessWidget {
                           onSaved: (value) {
                             controller.name = value;
                             sendname = controller.name;
+                          },
+                        ),
+                        const SizedBox(height: 20),
+                        CustomTextFormField(
+                          title: 'Location',
+                          hintText: 'Enter Your Location'.tr,
+                          validator: (value) {
+                            if (value!.isEmpty || value.length < 4) {
+                              return 'Please enter valid Location.';
+                            }
+                            return null;
+                          },
+                          onSaved: (value) {
+                            controller.locate = value;
                           },
                         ),
                         const SizedBox(height: 20),

@@ -19,10 +19,8 @@ class DrawerNav extends StatelessWidget {
         FirebaseAuth.instance.currentUser!.providerData[0].providerId;
     return GetBuilder<ProfileViewModel>(
       init: ProfileViewModel(),
-      builder: (controller) => controller.loading == true
-          ? const Center(
-              child: CircularProgressIndicator(),
-            )
+      builder: (controller) => controller.loading
+          ? const Center(child: CircularProgressIndicator())
           : Drawer(
               child: SingleChildScrollView(
                 child: Column(

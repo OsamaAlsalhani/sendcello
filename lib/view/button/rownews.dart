@@ -17,7 +17,8 @@ class RowNews extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: primaryColor),
+            border: Border.all(color: secondColor),
+            color: const Color(0xFFE7C7B7),
           ),
           height: 75,
           width: 75,
@@ -30,11 +31,15 @@ class RowNews extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: const [
-                  Icon(Icons.newspaper),
+                  Icon(
+                    Icons.newspaper,
+                    color: Color(0xFF7C4E46),
+                  ),
                   CustomText(
                     text: 'News',
                     alignment: Alignment.center,
                     fontSize: 12,
+                    color: Color(0xFF7C4E46),
                   ),
                 ],
               ),
@@ -44,7 +49,8 @@ class RowNews extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: primaryColor),
+            border: Border.all(color: secondColor),
+            color: const Color(0xFFE7C7B7),
           ),
           height: 75,
           width: 75,
@@ -57,11 +63,15 @@ class RowNews extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: const [
-                  Icon(Icons.home_work),
+                  Icon(
+                    Icons.home_work,
+                    color: Color(0xFF7C4E46),
+                  ),
                   CustomText(
                     text: 'Branches',
                     alignment: Alignment.center,
                     fontSize: 12,
+                    color: Color(0xFF7C4E46),
                   ),
                 ],
               ),
@@ -71,7 +81,8 @@ class RowNews extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: primaryColor),
+            border: Border.all(color: secondColor),
+            color: const Color(0xFFE7C7B7),
           ),
           height: 75,
           width: 75,
@@ -84,11 +95,15 @@ class RowNews extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: const [
-                  Icon(Icons.message),
+                  Icon(
+                    Icons.message,
+                    color: Color(0xFF7C4E46),
+                  ),
                   CustomText(
                     text: 'FeedBack',
                     alignment: Alignment.center,
                     fontSize: 12,
+                    color: Color(0xFF7C4E46),
                   ),
                 ],
               ),

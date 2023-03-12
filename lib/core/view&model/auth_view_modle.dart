@@ -12,9 +12,9 @@ import '../../view/control_view.dart';
 class AuthViewModel extends GetxController {
   String? email, password, name, phoneFB;
 
-  Rxn<User>? _user = Rxn<User>();
+  Rxn<User> _user = Rxn<User>();
 
-  String? get user => _user?.value?.email;
+  String? get user => _user.value?.email;
 
   final _auth = FirebaseAuth.instance;
   final LocalStorageUser localStorageUser = Get.find();
@@ -22,7 +22,7 @@ class AuthViewModel extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    _user!.bindStream(_auth.authStateChanges());
+    _user.bindStream(_auth.authStateChanges());
   }
 
   void signUpWithEmailAndPassword() async {
@@ -49,7 +49,7 @@ class AuthViewModel extends GetxController {
       await _auth
           .signInWithEmailAndPassword(email: email!, password: password!)
           .then((value) async {
-        FirestoreUser().getUserFromFirestore(value.user!.uid).then((doc) {
+        await FirestoreUser().getUserFromFirestore(value.user!.uid).then((doc) {
           saveUserLocal(
               UserModel.fromJson(doc.data() as Map<dynamic, dynamic>));
         });

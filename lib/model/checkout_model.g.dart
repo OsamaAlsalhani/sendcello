@@ -19,6 +19,7 @@ CheckoutModel _$CheckoutModelFromJson(DocumentSnapshot json) => CheckoutModel(
     isCancelled: json['isCancelled'] as bool? ?? false,
     isDelivered: json['isDelivered'] as bool? ?? false,
     id: json['id'] as String,
+    locate: json['locate'] as String,
     userId: json['userId']);
 
 Map<String, dynamic> _$CheckoutModelToJson(CheckoutModel instance) =>
@@ -34,4 +35,5 @@ Map<String, dynamic> _$CheckoutModelToJson(CheckoutModel instance) =>
       'isDelivered': instance.isDelivered,
       'isCancelled': instance.isCancelled,
       'userId': instance.userId,
+      'locate': instance.locate,
     };

@@ -36,7 +36,7 @@ class RowName extends StatelessWidget {
           child: const CustomText(
             text: 'See all',
             fontSize: 16,
-            color: primaryColor,
+            color: secondColor,
           ),
         ),
       ],

@@ -8,7 +8,7 @@ import '../../model/user_model.dart';
 class ProfileViewModel extends GetxController {
   UserModel? _currentUser;
   String? name, email, password, picUrl;
-  final LocalStorageUser localStorageUser = Get.find();
+  final LocalStorageUser localStorageUser = Get.put(LocalStorageUser());
 
   UserModel? get currentUser => _currentUser;
 

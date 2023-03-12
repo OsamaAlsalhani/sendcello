@@ -21,8 +21,13 @@ class _ImagesSliderState extends State<ImagesSlider> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(color: primaryColor),
+        border: Border.all(color: secondColor),
         borderRadius: BorderRadius.circular(15),
+        color: Colors.white,
+        image: const DecorationImage(
+          image: AssetImage('assets/images/bgslider.jpg'),
+          fit: BoxFit.fill,
+        ),
       ),
       height: 200,
       width: 300,
