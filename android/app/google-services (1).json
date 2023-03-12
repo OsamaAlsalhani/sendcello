@@ -58,14 +58,6 @@
           }
         },
         {
-          "client_id": "251594571379-67gdmmm2ldrh9h8n9khv05dgam1gm4v5.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.osamaalsalhani.supercellostore",
-            "certificate_hash": "1ef56164f79992910d615c0b9e49e83dffe653a2"
-          }
-        },
-        {
           "client_id": "251594571379-msak4mi9tb07o9fh3kicncujems94j76.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
